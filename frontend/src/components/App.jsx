@@ -60,8 +60,8 @@ function App() {
       setLoading(true);
       Promise.all([api.getUserInfo(), api.getInitialCards()])
         .then(([userData, cardList]) => {
-          setCurrentUser(userData);
-          setCards(cardList);
+          setCurrentUser(userData.data);
+          setCards(cardList.data);
         })
         .catch((err) => console.error(err))
         .finally(() => setLoading(false))

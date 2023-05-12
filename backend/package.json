@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hixozeN/express-mesto-gha.git"
+    "url": "git+https://github.com/hixozeN/react-mesto-api-full.git"
   },
   "keywords": [
     "Mesto",
@@ -22,9 +22,9 @@
   "author": "Vladislav K",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/hixozeN/express-mesto-gha/issues"
+    "url": "https://github.com/hixozeN/react-mesto-api-full/issues"
   },
-  "homepage": "https://github.com/hixozeN/express-mesto-gha#readme",
+  "homepage": "https://github.com/hixozeN/react-mesto-api-full#readme",
   "devDependencies": {
     "eslint": "^8.39.0",
     "eslint-config-airbnb-base": "^15.0.0",

@@ -8,8 +8,9 @@ const Card = (props) => {
 
   const currentUser = useContext(CurrentUserContext);
 
-  const isOwn = props.cardData.owner._id === currentUser._id;
-  const isLiked = props.likes.find((user) => user._id === currentUser._id);
+  const isOwn = props.cardData.owner === currentUser._id;
+  const isLiked = props.likes.find((user) => user === currentUser._id);
+  console.log(currentUser);
   
   const cardLikeButtonClassName = `card__like-button ${
     isLiked && "card__like-button_active"

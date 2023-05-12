@@ -4,6 +4,7 @@ import { CurrentUserContext } from "../contexts/CurrentUserContext.js";
 
 const Main = (props) => {
   const userData = useContext(CurrentUserContext);
+  console.log(props.cards)
 
   return (
     <main className="page">

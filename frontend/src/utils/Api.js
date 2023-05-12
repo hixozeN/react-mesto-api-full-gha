@@ -1,7 +1,8 @@
 class Api {
   constructor() {
     this._link = 'https://api.mesto.hixozen.ru';
-    this._token = `Bearer ${ localStorage.getItem('token') }`;
+    // this._link = 'http://localhost:3000';
+    this._token = `Bearer ${ localStorage.getItem('jwt') }`;
     this._headers = {
       authorization: this._token,
       'Content-Type': 'application/json'
