@@ -8,6 +8,7 @@ const helmet = require('helmet'); // https://expressjs.com/ru/advanced/best-prac
 
 const { errors } = require('celebrate');
 const responseHandler = require('./middlewares/responseHandler');
+const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 const router = require('./routes');
 const { PORT, MONGO_DB } = require('./utils/config');
@@ -34,6 +35,8 @@ const limiter = rateLimit({
 app.use(limiter); // AntiDOS на все реквесты
 app.use(helmet()); // защита
 
+app.use(requestLogger);
+
 app.get('/crash-test', () => {
   setTimeout(() => {
     throw new Error('Сервер сейчас упадёт');
@@ -41,6 +44,7 @@ app.get('/crash-test', () => {
 });
 app.use(router); // роутинг апи
 
+app.use(errorLogger);
 app.use(errors()); // ошибки валидации celebrate
 app.use(responseHandler); // централизованный обработчик ошибок
 
