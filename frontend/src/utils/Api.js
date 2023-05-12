@@ -11,11 +11,11 @@ class Api {
     return Promise.reject(`Ошибка: ${res.status}`);
   }
 
-  getUserInfo() {
+  getUserInfo(token) {
     return fetch(`${this._link}/users/me`, {
       headers: {
         "Content-Type": "application/json",
-        authorization: 'Bearer ' + JSON.parse(localStorage.getItem("jwt")),
+        authorization: 'Bearer ' + token,
         Accept: "*/*",
       },
     }).then((res) => this._checkResponse(res));
@@ -46,11 +46,11 @@ class Api {
     }).then((res) => this._checkResponse(res));
   }
 
-  getInitialCards() {
+  getInitialCards(token) {
     return fetch(`${this._link}/cards`, {
       headers: {
         "Content-Type": "application/json",
-        authorization: 'Bearer ' + JSON.parse(localStorage.getItem("jwt")),
+        authorization: 'Bearer ' + token,
         Accept: "*/*",
       },
     }).then((res) => this._checkResponse(res));
