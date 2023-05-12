@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const { SECRET } = require('../utils/config');
+// const { SECRET } = require('../utils/config');
+const SECRET = 'f122c3cfea1a79ef062504abdbee540e2843d217ecd2605a50b9121523825afb';
 
 const { ValidationError } = mongoose.Error;
 const User = require('../models/userSchema');
