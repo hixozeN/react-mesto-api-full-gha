@@ -34,6 +34,11 @@ const limiter = rateLimit({
 app.use(limiter); // AntiDOS на все реквесты
 app.use(helmet()); // защита
 
+app.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+});
 app.use(router); // роутинг апи
 
 app.use(errors()); // ошибки валидации celebrate
