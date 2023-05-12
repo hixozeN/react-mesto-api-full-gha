@@ -73,7 +73,7 @@ function App() {
       api
         .createCard({ name, link })
         .then((newCard) => {
-          setCards([newCard, ...cards]);
+          setCards([newCard.data, ...cards]);
           closeAllPopups();
         })
         .catch((err) => console.error(err))
@@ -81,13 +81,13 @@ function App() {
     };
   // Лайк карточки
   const handleCardLike = (card) => {
-    const isLiked = card.likes.some((user) => user._id === currentUser._id);
+    const isLiked = card.likes.some((user) => user === currentUser._id);
 
     api
       .changeLikeCardStatus(card._id, isLiked)
       .then((newCard) =>
         setCards((state) =>
-          state.map((c) => (c._id === card._id ? newCard : c))
+          state.map((c) => (c._id === card._id ? newCard.data : c))
         )
       )
       .catch((err) => console.error(err));
@@ -105,7 +105,7 @@ function App() {
     api
       .setUserInfo({ name, about })
       .then((userData) => {
-        setCurrentUser(userData);
+        setCurrentUser(userData.data);
         closeAllPopups();
       })
       .catch((err) => console.error(err))
@@ -117,7 +117,7 @@ function App() {
     api
       .setUserAvatar({ avatar })
       .then((userData) => {
-        setCurrentUser(userData);
+        setCurrentUser(userData.data);
         closeAllPopups();
       })
       .catch((err) => console.error(err))

@@ -2,30 +2,31 @@ import React, { useContext, useState } from "react";
 import noPhoto from "../images/no-photo.jpg";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
-const Card = (props) => {
+const Card = ({ cardData, likes, name, link, onCardClick, onCardLike, onCardDelete }) => {
   const [isErrorLoading, setErrorLoading] = useState(false); // стейт под ошибку загрузки изображения карточки
   const [isDeleting, setDeleting] = useState(false);
 
   const currentUser = useContext(CurrentUserContext);
-
-  const isOwn = props.cardData.owner === currentUser._id;
-  const isLiked = props.likes.find((user) => user === currentUser._id);
-  console.log(currentUser);
+  console.log(likes)
+  const isOwn = cardData.owner === currentUser._id;
+  const isLiked = likes.some((user) => user === currentUser._id);
   
   const cardLikeButtonClassName = `card__like-button ${
     isLiked && "card__like-button_active"
   }`;
 
   const handleClick = () => {
-    props.onCardClick(props.cardData);
+    onCardClick(cardData);
   };
 
   const handleLikeClick = () => {
-    props.onCardLike(props.cardData);
+    onCardLike(cardData);
+    console.log(isLiked);
+    console.log('clicked like')
   };
 
   const handleDeleteClick = () => {
-    props.onCardDelete(props.cardData);
+    onCardDelete(cardData);
     setDeleting(true);
   };
 
@@ -34,7 +35,7 @@ const Card = (props) => {
   return (
     <div className="card">
       <div className="card__heading">
-        <h2 className="card__title">{props.name}</h2>
+        <h2 className="card__title">{name}</h2>
         <div className="card__like-container">
           <button
             className={cardLikeButtonClassName}
@@ -42,14 +43,14 @@ const Card = (props) => {
             aria-label="Нравится"
             onClick={handleLikeClick}
           ></button>
-          <p className="card__like-counter">{props.likes.length}</p>
+          <p className="card__like-counter">{likes.length}</p>
         </div>
       </div>
       <img
         className="card__image"
         onError={handleOnError} // ошибка загрузки - меняем стейт
-        src={isErrorLoading ? noPhoto : props.link} // есть ошибка загрузки - вешаем заглушку, нет - показываем изображение
-        alt={props.name}
+        src={isErrorLoading ? noPhoto : link} // есть ошибка загрузки - вешаем заглушку, нет - показываем изображение
+        alt={name}
         onClick={handleClick}
       />
 
