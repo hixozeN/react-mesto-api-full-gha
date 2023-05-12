@@ -1,0 +1,12 @@
+.head-profile__username-and-edit {
+  max-width: 500px;
+  display: flex;
+  align-items: baseline;
+}
+
+@media screen and (max-width: 720px) {
+  .head-profile__username-and-edit {
+    align-items: center;
+    justify-content: center;
+  }
+}

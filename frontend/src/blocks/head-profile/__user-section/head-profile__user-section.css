@@ -1,0 +1,10 @@
+.head-profile__user-section {
+  display: flex;
+}
+
+@media screen and (max-width: 917px) {
+  .head-profile__user-section {
+    flex-direction: column;
+    align-items: center;
+  }
+}

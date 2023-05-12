@@ -1,0 +1,15 @@
+.head-profile {
+  max-width: 880px;
+  display: flex;
+  justify-content: space-between;
+  padding: 40px 0 50px 0;
+}
+
+@media screen and (max-width: 917px) {
+  .head-profile {
+    padding: 42px 0 36px 0;
+    flex-direction: column;
+    align-self: center;
+    gap: 33px;
+  }
+}

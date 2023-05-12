@@ -1,0 +1,16 @@
+.header__link {
+  margin: 0;
+  text-decoration: none;
+  color: #fff;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 2;
+  cursor: pointer;
+  transition: all .2s ease-in-out;
+}
+
+@media (pointer: fine) {
+  .header__link:hover {
+    opacity: .6;
+  }
+}

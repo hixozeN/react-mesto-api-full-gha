@@ -1,0 +1,4 @@
+.header__buttons-wrapper {
+  display: flex;
+  gap: 24px;
+}

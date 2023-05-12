@@ -1,0 +1,16 @@
+.popup__status-title {
+  color: #000;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 29px;
+  text-align: center;
+  margin: 0;
+  padding-bottom: 23px;
+}
+
+@media screen and (max-width: 720px) {
+  .popup__status-title {
+    font-size: 20px;
+    line-height: 24px;
+  }
+}

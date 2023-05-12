@@ -1,0 +1,27 @@
+.head-profile__add-button {
+  width: 150px;
+  height: 50px;
+  padding: 0;
+  align-self: center;
+  background-image: url(../../../images/add-photo.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: transparent;
+  border: 2px solid #fff;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: opacity 0.3s linear;
+}
+
+@media (pointer: fine) {
+  .head-profile__add-button:hover {
+    opacity: 0.6;
+  }
+}
+
+@media screen and (max-width: 917px) {
+  .head-profile__add-button {
+    width: 282px;
+    background-size: 16px 16px;
+  }
+}

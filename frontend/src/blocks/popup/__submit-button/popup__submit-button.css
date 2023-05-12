@@ -1,0 +1,89 @@
+.popup__submit-button {
+  width: 358px;
+  height: 50px;
+  border: 0;
+  margin: 0 auto;
+  padding: 0;
+  display: block;
+  cursor: pointer;
+  transition: opacity .4s;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: center;
+  color: #FFFFFF;
+  background-color: #000;
+  border-radius: 2px;
+}
+
+.popup__submit-button:hover {
+  opacity: 0.8;
+}
+
+@media screen and (max-width: 720px) {
+  .popup__submit-button {
+    width: 238px;
+    height: 46px;
+    font-size: 14px;
+    line-height: 17px;
+  }
+}
+
+.popup__submit-button .dot-1,
+    .popup__submit-button .dot-2,
+    .popup__submit-button .dot-3 {
+      animation-duration: 1s;
+      animation-iteration-count: infinite;
+      opacity: 0;
+    }
+    
+    .popup__submit-button .dot-1 {
+      animation-name: dot-1;
+      animation-delay: 0s;
+    }
+    
+    .popup__submit-button .dot-2 {
+      animation-name: dot-2;
+      animation-delay: 0.2s;
+    }
+    
+    .popup__submit-button .dot-3 {
+      animation-name: dot-3;
+      animation-delay: 0.4s;
+    }
+    
+    @keyframes dot-1 {
+      0% {
+        opacity: 0;
+      }
+      25% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0;
+      }
+    }
+    
+    @keyframes dot-2 {
+      0% {
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+      }
+      75% {
+        opacity: 0;
+      }
+    }
+    
+    @keyframes dot-3 {
+      0% {
+        opacity: 0;
+      }
+      75% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+      }
+    }
