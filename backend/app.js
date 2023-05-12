@@ -10,13 +10,13 @@ const { errors } = require('celebrate');
 const responseHandler = require('./middlewares/responseHandler');
 
 const router = require('./routes');
-const { PORT, MONGO } = require('./utils/config');
+const { PORT, MONGO_DB } = require('./utils/config');
 
 const app = express();
 app.use(cors());
 
 mongoose.set('strictQuery', false);
-mongoose.connect(MONGO, {
+mongoose.connect(MONGO_DB, {
   useUnifiedTopology: true,
   useNewUrlParser: true,
   autoIndex: true, // make this also true
