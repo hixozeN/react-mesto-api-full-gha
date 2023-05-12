@@ -1,6 +1,6 @@
 class Api {
   constructor() {
-    this._link = 'http://api.mesto.hixozen.ru';
+    this._link = 'https://api.mesto.hixozen.ru';
     this._token = `Bearer ${ localStorage.getItem('token') }`;
     this._headers = {
       authorization: this._token,

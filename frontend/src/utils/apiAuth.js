@@ -1,4 +1,4 @@
-const BASE_URL = "http://api.mesto.hixozen.ru";
+const BASE_URL = "https://api.mesto.hixozen.ru";
 
 const checkResponse = (res) => {
   if (res.ok) {
