@@ -56,7 +56,8 @@ function App() {
   };
   // Подгрузка данных при логине
   useEffect(() => {
-    if (isLoggedIn) {
+    const token = localStorage.getItem('jwt');
+    if (token) {
       setLoading(true);
       Promise.all([api.getUserInfo(), api.getInitialCards()])
         .then(([userData, cardList]) => {
