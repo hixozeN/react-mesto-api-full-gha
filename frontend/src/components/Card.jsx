@@ -7,7 +7,6 @@ const Card = ({ cardData, likes, name, link, onCardClick, onCardLike, onCardDele
   const [isDeleting, setDeleting] = useState(false);
 
   const currentUser = useContext(CurrentUserContext);
-  console.log(likes)
   const isOwn = cardData.owner === currentUser._id;
   const isLiked = likes.some((user) => user === currentUser._id);
   

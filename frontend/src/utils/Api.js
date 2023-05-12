@@ -15,7 +15,7 @@ class Api {
     return fetch(`${this._link}/users/me`, {
       headers: {
         "Content-Type": "application/json",
-        authorization: `Bearer ${localStorage.getItem("jwt")}`,
+        authorization: 'Bearer ' + localStorage.getItem("jwt"),
         Accept: "*/*",
       },
     }).then((res) => this._checkResponse(res));
@@ -50,7 +50,7 @@ class Api {
     return fetch(`${this._link}/cards`, {
       headers: {
         "Content-Type": "application/json",
-        authorization: `Bearer ${localStorage.getItem("jwt")}`,
+        authorization: 'Bearer ' + localStorage.getItem("jwt"),
         Accept: "*/*",
       },
     }).then((res) => this._checkResponse(res));
