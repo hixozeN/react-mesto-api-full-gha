@@ -8,7 +8,10 @@ class Api {
     if (res.ok) {
       return res.json();
     }
-    return Promise.reject(`Ошибка: ${res.status}`);
+    return res.text().then((text) => {
+      // парсим и прокидываем ошибку бэкенда, пока не сделан либо свой бэк с ошибками, либо обработка кодов на фронте
+      throw JSON.parse(text).message || JSON.parse(text).error;
+    });
   }
 
   getUserInfo() {

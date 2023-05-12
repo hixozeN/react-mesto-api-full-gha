@@ -12,6 +12,9 @@ const PopupAddCard = (props) => {
       name: placeName,
       link: placeLink,
     });
+    setTimeout(() => {
+      props.onResetError();
+    }, 3000);
   };
 
   useEffect(() => {
@@ -28,6 +31,7 @@ const PopupAddCard = (props) => {
       onSubmit={handleSubmit}
       isValid={isValid}
     >
+      <span className={`popup__input-error avaurl-error ${props.errorText && 'popup__input-error_active'}`}>Ошибка при запросе: {props.errorText}</span>
       <input
         className="popup__input popup__input_field_placename"
         type="text"

@@ -53,6 +53,7 @@ function App() {
     setIsEditAvatarPopupOpen(false);
     setIsImagePopupOpen(false);
     setIsInfoPopupOpen(false);
+    setErrorText('');
   };
   // Подгрузка данных при логине
   useEffect(() => {
@@ -64,7 +65,11 @@ function App() {
           setCurrentUser(userData.data);
           setCards(cardList.data.reverse());
         })
-        .catch((err) => console.error(err))
+        .catch((err) => {
+          setError(true);
+          setErrorText(err);
+          setIsInfoPopupOpen(true);
+        })
         .finally(() => setLoading(false))
       }
     }, [isLoggedIn]);
@@ -77,7 +82,9 @@ function App() {
           setCards([newCard.data, ...cards]);
           closeAllPopups();
         })
-        .catch((err) => console.error(err))
+        .catch((err) => {
+          setErrorText(() => `${err}`);
+        })
         .finally(() => setFetching(false));
     };
   // Лайк карточки
@@ -109,7 +116,9 @@ function App() {
         setCurrentUser(userData.data);
         closeAllPopups();
       })
-      .catch((err) => console.error(err))
+      .catch((err) => {
+        setErrorText(() => `${err}`);
+      })
       .finally(() => setFetching(false));
   };
   // Изменение аватара
@@ -121,7 +130,9 @@ function App() {
         setCurrentUser(userData.data);
         closeAllPopups();
       })
-      .catch((err) => console.error(err))
+      .catch((err) => {
+        setErrorText(() => `${err}`);
+      })
       .finally(() => setFetching(false));
   };
   // Проверка токена
@@ -191,6 +202,7 @@ function App() {
     setLoggedIn(false);
     navigate("/sign-in", { replace: true });
   };
+  const resetErrorText = () => setErrorText('');
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
@@ -239,18 +251,24 @@ function App() {
         onClose={closeAllPopups}
         onUpdateUser={handleUpdateUser}
         btnName={isFetching ? "Сохранение..." : "Сохранить"}
+        errorText={errorText}
+        onResetError={resetErrorText}
       />
       <PopupEditAvatar
         isOpen={isEditAvatarPopupOpen}
         onClose={closeAllPopups}
         onUpdateAvatar={handleUpdateAvatar}
         btnName={isFetching ? "Сохранение..." : "Сохранить"}
+        errorText={errorText}
+        onResetError={resetErrorText}
       />
       <PopupAddCard
         isOpen={isAddPlacePopupOpen}
         onClose={closeAllPopups}
         onAddPlace={handleAddPlaceSubmit}
         btnName={isFetching ? "Создание..." : "Создать"}
+        errorText={errorText}
+        onResetError={resetErrorText}
       />
       <ImagePopup
         isOpen={isImagePopupOpen}

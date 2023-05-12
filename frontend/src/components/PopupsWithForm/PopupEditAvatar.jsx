@@ -11,6 +11,9 @@ const PopupEditAvatar = (props) => {
     props.onUpdateAvatar({
       avatar
     });
+    setTimeout(() => {
+      props.onResetError();
+    }, 3000);
   };
 
   useEffect(() => {
@@ -28,6 +31,7 @@ const PopupEditAvatar = (props) => {
       onSubmit={handleSubmit}
       isValid={isValid}
     >
+      <span className={`popup__input-error avaurl-error ${props.errorText && 'popup__input-error_active'}`}>Ошибка при запросе: {props.errorText}</span>
       <input
         className="popup__input popup__input_field_ava-url"
         type="url"
