@@ -20,8 +20,6 @@ const Card = ({ cardData, likes, name, link, onCardClick, onCardLike, onCardDele
 
   const handleLikeClick = () => {
     onCardLike(cardData);
-    console.log(isLiked);
-    console.log('clicked like')
   };
 
   const handleDeleteClick = () => {
