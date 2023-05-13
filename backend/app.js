@@ -27,24 +27,19 @@ app.use(express.json());
 
 // AntiDOS & helmet
 const limiter = rateLimit({
-  windowMs: 1000, // 15 minutes
-  max: 5000000, // Limit each IP to 100 requests per `window` (here, per 15 minutes)
+  windowMs: 1000, // 1min
+  max: 5000, // Limit each IP to 5000 requests per `window` (here, per 1 min)
   standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
   legacyHeaders: false, // Disable the `X-RateLimit-*` headers
 });
 app.use(limiter); // AntiDOS на все реквесты
 app.use(helmet()); // защита
 
-app.use(requestLogger);
+app.use(requestLogger); // логгер реквестов
 
-app.get('/crash-test', () => {
-  setTimeout(() => {
-    throw new Error('Сервер сейчас упадёт');
-  }, 0);
-});
 app.use(router); // роутинг апи
 
-app.use(errorLogger);
+app.use(errorLogger); // логгер ошибок
 app.use(errors()); // ошибки валидации celebrate
 app.use(responseHandler); // централизованный обработчик ошибок
 
